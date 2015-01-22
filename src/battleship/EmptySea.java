@@ -17,16 +17,16 @@ public class EmptySea extends Ship{
 	
 	@Override
 	public boolean shootAt(int row, int column){
-		return false; // TODO !!
+		return false; // Always returns false to indicate that nothing was hit !!
 	}
 	
 	@Override
 	public boolean isSunk(){
-		return false; // TODO !!
+		return false; // Always returns false to indicate that nothing was sunk !!
 	}
 	
 	@Override
 	public String toString(){
-		return "some string";
+		return "some string"; // TODO !!
 	}
 }
