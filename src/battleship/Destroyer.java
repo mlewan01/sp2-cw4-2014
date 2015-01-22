@@ -1,0 +1,31 @@
+/**
+ * 
+ */
+package battleship;
+
+/**
+ * Describes a ship of length 2
+ * 
+ * @author: mlewan01 <Mariusz Lewandowski, Student ref: 12906023>
+ * class: sp2-2014
+ * what: sp2-cw4-2014 Battleship game
+ */
+public class Destroyer extends Ship{
+	
+	private String type; 
+	
+	public Destroyer(){
+		hit  = new boolean[4];
+		length = 2;
+		type = "destroyer";
+	}
+	
+	@Override
+	public String getShipType(){
+		return "type";
+	}
+	@Override
+	public String toString(){
+		return "some string";
+	}
+}
