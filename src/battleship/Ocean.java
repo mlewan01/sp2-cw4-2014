@@ -28,28 +28,26 @@ public class Ocean {
 	}
 	
 	/**
-	 * Place all ten ships randomly on the (initially empty)
-ocean. Place larger ships before smaller ones, or you may end up with no legal
-place to put a large ship. You will want to use the Random class in the java.util
-package, so look that up in the Java API.
+	 * Places all ten ships randomly on the (initially empty) ocean. 
+	 * Places larger ships before smaller ones, to avoid ending up with no legal place to put a large ship. 
+	 * You will want to use the Random class in the java.util package, so look that up in the Java API.
 	 */
 	public void placeAllShipsRandomly(){
 		// TODO !!
 	}
 	/**
 	 * Returns true if the given location contains a ship, false if it does not.
+	 * @return true if the location is is occupied, false otherwise
 	 */
 	boolean isOccupied(int row, int column){
 		return false; // TODO !!
 	}
 	/**
-	 * Returns true if the given location contains
-a real ship, still a
-oat, (not an EmptySea), false if it does not. In addition, this
-method updates the number of shots that have been red, and the number of hits.
-Note: If a location contains a real ship, shootAt should return true every time
-the user shoots at that same location. Once a ship has been sunk, additional shots
-at its location should return false.
+	 * Returns true if the given location contains a real ship, still afloat, (not an EmptySea), false if it does not. 
+	 * In addition, this method updates the number of shots that have been fired, and the number of hits. 
+	 * Note: If a location contains a real ship, shootAt should return true every time the user shoots at that same location. 
+	 * Once a ship has been sunk, additional shots at its location should return false.
+	 * @return true if the ship is still floating, false otherwise
 	 */
 	boolean shootAt(int row, int column){
 		return false; // TODO !!
