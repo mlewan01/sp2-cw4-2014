@@ -3,6 +3,7 @@
  */
 package battleship;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,7 @@ public class BattleshipGame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int x=0, y=0;
+		int [] xy = new int[2];
 		String s;
 		boolean mustGameGoOn = true;
 		Scanner sc = new Scanner(System.in);
@@ -27,29 +28,13 @@ public class BattleshipGame {
 		while (sc.hasNext() && (sc.nextLine().equalsIgnoreCase("y"))){
 			System.out.println("gra w toku");
 			do{
-				System.out.println("Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space");
-				try{
-					x=sc.nextInt(); 
-					y=sc.nextInt();
-				}catch(Exception e){
-					 	System.out.println("wrong input, please try again...");
-					 	sc.nextLine();
-					 	continue;
-				}
-				if(x>9 || x<0){
-					System.out.println("x not in a range..."+x);
-					continue;
-				}
-				if(y>9 || y<0){
-					System.out.println("y not in a range..."+y);
-					continue;
-				}
+				xy = userImput("Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space or \"\\n\". \nEnter \"exit\" to exit the game.");
 				
 			}while(mustGameGoOn);
 			System.out.println("Would you like to play the game again? [Y/N]");
 		}
 		sc.close();
-		System.out.println("x="+x+"  y="+y);
+		System.out.println("x="+xy[0]+"  y="+xy[1]);
 		System.out.println("game exit...");
 		
 	}
@@ -60,26 +45,38 @@ public class BattleshipGame {
 	 * Collect user input for the coordinates for the shoot.
 	 * @return int array with coordinates to perform shoot to.
 	 */
-	public String userImput(String msg){
-		System.out.println(msg);
-		String s="";
-		
+	public static int[] userImput(String msg){
+		int [] xy = new int[2];
 		boolean inputCorrect = false;
 		Scanner sc = new Scanner(System.in);
 		while(!inputCorrect){
+			System.out.println(msg);
 			try{
-				s = sc.nextLine();
-				inputCorrect = true;
-				sc.close();
-	
+				if(sc.hasNext("exit")) {
+					System.out.println("exiting...");
+					System.exit(0);
+				}
+				xy[0] =sc.nextInt(); 
+				xy[1]=sc.nextInt();
+			}catch(InputMismatchException e){
+			 	System.out.println("wrong input, please try again...");
+			 	sc.nextLine();
+			 	continue;
 			}catch(Exception e){
-				System.out.println("Sorry, input errors detected... Please input again!");
-				sc.close();
-				sc = new Scanner(System.in);
+				System.out.println("some other errors... please try again !");
+				sc.nextLine();
+				continue;
+			}
+			if(xy[0]>9 || xy[0]<0){
+				System.out.println("x not in a range..."+xy[0]);
+				continue;
+			}
+			if(xy[1]>9 || xy[1]<0){
+				System.out.println("y not in a range..."+xy[1]);
 				continue;
 			}
 		}
 
-		return s;
+		return xy;
 	}
 }
