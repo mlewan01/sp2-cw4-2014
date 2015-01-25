@@ -15,11 +15,23 @@ import java.util.Scanner;
  */
 public class BattleshipGame {
 	
+	public static void main(String[] arg){
+		Ocean o = new Ocean();
+		for(int i = 0; i<10;i++){
+			for(int j=0; j<10; j++){
+				o.getShipArray()[i][j] = new Ship();
+				//System.out.println( "dupa" );
+				System.out.println(o.getShipArray()[i][j].toString());
+			}
+		}
+		System.out.println(o.getShipArray());
+	}
+	
 	
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		int [] xy = new int[2];
 		String s;
 		boolean mustGameGoOn = true;

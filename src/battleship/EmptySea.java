@@ -11,10 +11,17 @@ package battleship;
  */
 public class EmptySea extends Ship{
 	
+	String type;
+	
 	public EmptySea() {
 		super.length = 1;
+		type="empty sea";
 	}
 	
+	@Override
+	public String getShipType() {
+		return type;
+	};
 	@Override
 	public boolean shootAt(int row, int column){
 		return false; // Always returns false to indicate that nothing was hit !!
@@ -27,6 +34,6 @@ public class EmptySea extends Ship{
 	
 	@Override
 	public String toString(){
-		return "some string"; // TODO !!
+		return "es"; // TODO !!
 	}
 }

@@ -1,12 +1,17 @@
 package jUnitTests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+
+import java.util.Arrays;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import battleship.Ocean;
+import battleship.Ship;
 /**
  * This is  a JUnit test for Ocean. Test every required method for Ocean, including the constructor, 
  * but not including the print() method.
@@ -16,9 +21,13 @@ import org.junit.Test;
  * what: sp2-cw4-2014 Battleship game
  */
 public class ShipTest {
+	
+	private static Ocean o; 
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		o = new Ocean();
+		o.placeAllShipsRandomly();
 	}
 
 	@AfterClass
@@ -27,6 +36,7 @@ public class ShipTest {
 
 	@Before
 	public void setUp() throws Exception {
+		
 	}
 
 	@After
@@ -35,7 +45,14 @@ public class ShipTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
+		for(int i = 0; i<10;i++){
+			for(int j=0; j<10; j++){
+				System.out.println(o.getShipArray()[i][j].toString());
+			}
+		}
+		System.out.println(o.getShipArray());
+
 	}
 
 }

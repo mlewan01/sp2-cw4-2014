@@ -15,7 +15,7 @@ public class Ship {
 	private int bowColumn; // which contains the bow (front) of the ship (0 to 9)
 	protected int length; // the number of squares occupied by the ship. 
 	private boolean horizontal; // true if the ship occupies a single row, false otherwise
-	protected boolean [] hit; // to indicate whether that part of the ship has been hit.
+	protected boolean [] hit = new boolean[4]; // to indicate whether that part of the ship has been hit.
 									 //only battleship uses 4 locations, see "length"
 	
 	
@@ -36,7 +36,7 @@ public class Ship {
 	 * (Note: This will be as many as four identical references; you can't refer to a part of a ship, only to the whole ship.)
 	 */
 	public void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
-		
+		// TODO 
 	}
 	/**
 	 * Checks if part of the ship occupies the given row and column and the ship hasn't been sunk, 
@@ -108,5 +108,11 @@ public class Ship {
 	public int getLength(){
 		return length;
 	}
-	
+	/**
+	 * toString method, printing the Object state
+	 * @return String containing state of the object	
+	 */
+	public String toString(){
+		return "sh ";
+	}
 }

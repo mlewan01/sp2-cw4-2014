@@ -33,13 +33,19 @@ public class Ocean {
 	 * You will want to use the Random class in the java.util package, so look that up in the Java API.
 	 */
 	public void placeAllShipsRandomly(){
+		for(int i = 0; i<10;i++){
+			for(int j=0; j<10; j++){
+				ships[i][j] = new Ship();
+			}
+		}
 		// TODO !!
 	}
 	/**
 	 * Returns true if the given location contains a ship, false if it does not.
 	 * @return true if the location is is occupied, false otherwise
 	 */
-	boolean isOccupied(int row, int column){
+	public boolean isOccupied(int row, int column){
+		//if(ships[row][column].getClass().getTypeName()=="EmptySea")
 		return false; // TODO !!
 	}
 	/**

@@ -22,10 +22,10 @@ public class Destroyer extends Ship{
 	
 	@Override
 	public String getShipType(){
-		return "type";
+		return type;
 	}
 	@Override
 	public String toString(){
-		return "some string";
+		return "de";
 	}
 }
