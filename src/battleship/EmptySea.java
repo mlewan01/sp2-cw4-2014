@@ -8,14 +8,17 @@ package battleship;
  * 
  * @author: mlewan01 <Mariusz Lewandowski, Student ref: 12906023>
  * class: sp2-2014
+ * what: sp2-cw4-2014 Battleship game
  */
 public class EmptySea extends Ship{
 	
-	String type;
+	private String type;
 	
 	public EmptySea() {
+		super.hit  = new boolean[4];
 		super.length = 1;
-		type="empty sea";
+		type = "emptySea";
+		super.horizontal = true;
 	}
 	
 	@Override
@@ -34,6 +37,6 @@ public class EmptySea extends Ship{
 	
 	@Override
 	public String toString(){
-		return "es"; // TODO !!
+		return "es "; // TODO !!
 	}
 }

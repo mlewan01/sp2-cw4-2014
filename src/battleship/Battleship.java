@@ -15,8 +15,8 @@ public class Battleship extends Ship{
 	private String type; 
 	
 	public Battleship(){
-		hit  = new boolean[4];
-		length = 4;
+		super.hit  = new boolean[4];
+		super.length = 4;
 		type = "battleship";
 	}
 	
@@ -26,6 +26,6 @@ public class Battleship extends Ship{
 	}
 	@Override
 	public String toString(){
-		return "ba";
+		return "ba ";
 	}
 }

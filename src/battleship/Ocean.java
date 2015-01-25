@@ -3,6 +3,8 @@
  */
 package battleship;
 
+import java.util.Random;
+
 /**
  * Represents "ocean" the battlefield for ships.
  * 
@@ -25,6 +27,7 @@ public class Ocean {
 		shotsFired = 0;
 		hitCount = 0;
 		shipsSunk = 0;
+		
 	}
 	
 	/**
@@ -33,20 +36,69 @@ public class Ocean {
 	 * You will want to use the Random class in the java.util package, so look that up in the Java API.
 	 */
 	public void placeAllShipsRandomly(){
-		for(int i = 0; i<10;i++){
-			for(int j=0; j<10; j++){
-				ships[i][j] = new Ship();
+		Ship s = new Ship();
+		resetOcean();
+		Random ran = new Random();
+		
+		for(int i=0; i<10; i++){
+			int r = ran.nextInt(10);
+			int c = ran.nextInt(10);
+			boolean hor = ran.nextBoolean();
+			if(i==0)s=new Battleship();
+			if(i==1)s=new Cruiser();
+			if(i==3)s=new Destroyer();
+			if(i==6)s=new Submarine();
+			System.out.println("r: "+r+" c "+c);
+			if(!isOccupied(r,c)){
+				if(s.okToPlaceShipAt(r, c, hor, this)){
+					
+				}else{
+					i--;
+					continue;
+				}
+			}else{
+				i--;
+				continue;
 			}
 		}
-		// TODO !!
 	}
 	/**
 	 * Returns true if the given location contains a ship, false if it does not.
 	 * @return true if the location is is occupied, false otherwise
 	 */
 	public boolean isOccupied(int row, int column){
-		//if(ships[row][column].getClass().getTypeName()=="EmptySea")
-		return false; // TODO !!
+		int r = row;
+		int c = column;
+		if(ships[row][column].getShipType()!="emptySea"){
+			return true;
+		}else{
+			if(column>0){
+				for(int i=1; i<4; i++){
+					c -=1;
+					if(c>0){
+						if(ships[row][c].getShipType()!="emptySea"){
+							if(ships[row][c].isHorizontal())
+							return  true;
+						}
+					}
+					
+				}
+			}
+			r = row;
+			c = column;
+			if(row>0){
+				for(int i=1; i<4; i++){
+					r-=1;
+					if(r>0){
+						if(ships[r][column].getShipType()!="emptySea"){
+							if(!ships[r][column].isHorizontal())
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false; 
 	}
 	/**
 	 * Returns true if the given location contains a real ship, still afloat, (not an EmptySea), false if it does not. 
@@ -69,6 +121,13 @@ public class Ocean {
 	}
 	
 	// getters and setters
+	/**
+	 * setting a Ship at given location
+	 * @param row and column where to set the ship in ShipsArray
+	 */
+	public void setShip(int row, int column, Ship s){
+		this.ships[row][column] = s;
+	}
 	/**
 	 * Returns the number of shots fired (in this game).
 	 * @return shotsFired field 
@@ -109,5 +168,15 @@ public class Ocean {
 	 */
 	public Ship[][] getShipArray(){ // ukryta wskazowka w opisie zadania, byc moze do ulatwienia napisania programu
 		return ships;
+	}
+	/**
+	 * populates Ocean with the fresh empty sea objects !
+	 */
+	public void resetOcean(){
+		for(int i=0; i<10;i++){
+			for(int j=0; j<10;j++){
+				ships[i][j]=new EmptySea();
+			}
+		}
 	}
 }

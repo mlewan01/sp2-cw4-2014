@@ -15,8 +15,8 @@ public class Cruiser extends Ship{
 	private String type; 
 	
 	public Cruiser(){
-		hit  = new boolean[4];
-		length = 3;
+		super.hit  = new boolean[4];
+		super.length = 3;
 		type = "cruiser";
 	}
 	
@@ -26,6 +26,6 @@ public class Cruiser extends Ship{
 	}
 	@Override
 	public String toString(){
-		return "cr";
+		return "cr ";
 	}
 }

@@ -15,8 +15,8 @@ public class Destroyer extends Ship{
 	private String type; 
 	
 	public Destroyer(){
-		hit  = new boolean[4];
-		length = 2;
+		super.hit  = new boolean[4];
+		super.length = 2;
 		type = "destroyer";
 	}
 	
@@ -26,6 +26,6 @@ public class Destroyer extends Ship{
 	}
 	@Override
 	public String toString(){
-		return "de";
+		return "de ";
 	}
 }

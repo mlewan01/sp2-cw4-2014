@@ -15,9 +15,10 @@ public class Submarine extends Ship{
 	private String type; 
 	
 	public Submarine(){
-		hit  = new boolean[4];
-		length = 1;
+		super.hit  = new boolean[4];
+		super.length = 1;
 		type = "submarine";
+		super.horizontal = true;
 	}
 	
 	@Override
@@ -26,7 +27,7 @@ public class Submarine extends Ship{
 	}
 	@Override
 	public String toString(){
-		return "sm";
+		return "sm ";
 	}
 	
 }

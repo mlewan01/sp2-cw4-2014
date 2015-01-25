@@ -14,8 +14,11 @@ import java.util.Scanner;
  * what: sp2-cw4-2014 Battleship game
  */
 public class BattleshipGame {
-	
-	public static void main(String[] arg){
+	public static void main(String[] a){
+		Ocean o = new Ocean();
+		o.placeAllShipsRandomly();
+	}
+	public static void main2(String[] arg){
 		Ocean o = new Ocean();
 		for(int i = 0; i<10;i++){
 			for(int j=0; j<10; j++){

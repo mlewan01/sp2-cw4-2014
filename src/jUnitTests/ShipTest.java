@@ -3,6 +3,7 @@ package jUnitTests;
 import static org.junit.Assert.fail;
 
 import java.util.Arrays;
+import java.util.Random;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -27,7 +28,7 @@ public class ShipTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		o = new Ocean();
-		o.placeAllShipsRandomly();
+		//o.placeAllShipsRandomly();
 	}
 
 	@AfterClass
@@ -44,15 +45,9 @@ public class ShipTest {
 	}
 
 	@Test
-	public void test() {
-		
-		for(int i = 0; i<10;i++){
-			for(int j=0; j<10; j++){
-				System.out.println(o.getShipArray()[i][j].toString());
-			}
-		}
-		System.out.println(o.getShipArray());
-
+	public void testRandom(){
+		Random r = new Random();
+		for(int i=0; i<100;i++){System.out.print(r.nextInt(10)+"  ");
+		if(i==50)System.out.println();}
 	}
-
 }
