@@ -36,10 +36,8 @@ public class Ship {
 	 * (Note: This will be as many as four identical references; you can't refer to a part of a ship, only to the whole ship.)
 	 */
 	public void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
-		if(horizontal){
-			//for()
-		}
-		// TODO 
+		this.horizontal = horizontal;
+		ocean.ships[row][column] = this;
 	}
 	/**
 	 * Checks if part of the ship occupies the given row and column and the ship hasn't been sunk, 

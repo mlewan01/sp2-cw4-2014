@@ -37,6 +37,6 @@ public class EmptySea extends Ship{
 	
 	@Override
 	public String toString(){
-		return "es "; // TODO !!
+		return " . "; // TODO !!
 	}
 }

@@ -21,8 +21,8 @@ public class OceanTest {
 	public static void setUpBeforeClass() throws Exception {
 		o = new Ocean();
 		o.placeAllShipsRandomly();
-		o.setShip(9, 9, new Destroyer());
-		o.setShip(9, 4, new Submarine());
+		//o.setShip(9, 9, new Destroyer());
+		//o.setShip(9, 4, new Submarine());
 	}
 
 	@AfterClass

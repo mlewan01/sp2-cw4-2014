@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Ocean {
 	
-	private Ship [][] ships;
+	protected Ship [][] ships;
 	private int shotsFired;
 	private int hitCount;
 	private int shipsSunk;
@@ -48,10 +48,11 @@ public class Ocean {
 			if(i==1)s=new Cruiser();
 			if(i==3)s=new Destroyer();
 			if(i==6)s=new Submarine();
-			System.out.println("r: "+r+" c "+c);
+			
 			if(!isOccupied(r,c)){
 				if(s.okToPlaceShipAt(r, c, hor, this)){
-					
+					s.placeShipAt(r, c, hor, this);
+					System.out.println("r: "+r+" c "+c+ "ship: "+s.toString());
 				}else{
 					i--;
 					continue;
