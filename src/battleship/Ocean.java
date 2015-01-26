@@ -55,7 +55,7 @@ public class Ocean {
 					s.setBowColumn(c);
 					s.setHorizontal(hor);
 					s.placeShipAt(r, c, hor, this);
-					System.out.println("r: "+r+" c "+c+ "ship: "+s.toString());
+					System.out.println("r: "+r+" c "+c+ "ship: "+s.toString()); // TODO test output !!! remove for production !!
 				}else{
 					i--;
 					continue;
@@ -79,7 +79,7 @@ public class Ocean {
 			if(column>0){
 				for(int i=1; i<4; i++){
 					c -=1;
-					if(c>0){
+					if(c>=0){
 						if(ships[row][c].getShipType()!="emptySea"){
 							if(ships[row][c].isHorizontal())
 							return  true;
@@ -93,7 +93,7 @@ public class Ocean {
 			if(row>0){
 				for(int i=1; i<4; i++){
 					r-=1;
-					if(r>0){
+					if(r>=0){
 						if(ships[r][column].getShipType()!="emptySea"){
 							if(!ships[r][column].isHorizontal())
 							return true;

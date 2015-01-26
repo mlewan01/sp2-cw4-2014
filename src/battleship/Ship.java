@@ -45,31 +45,36 @@ public class Ship {
 	 * @return returns true if ship was hit, false otherwise 
 	 */
 	public boolean shootAt(int row, int column){
-		
-		if(horizontal){
-			if(bowRow==row){
-				if(bowColumn==column){
-					System.out.println("hit! 1");
-					return true;
-				}else if(bowColumn<column && (column-bowColumn<length)){
-					System.out.println("hit! 2");
-					return true;
-				}else{
-					return false;
-				}
-			}
-		}else{
-			if(bowColumn==column){
+		if(!this.isSunk()){
+			if(horizontal){
 				if(bowRow==row){
-					System.out.println("hit! 3");
-					return true;
-				}else if(bowRow<row && (row-bowRow<length)){
-					System.out.println("hit! 4");
-					return true;
+					if(bowColumn==column){
+						System.out.println("hit! 1");
+						hit[0] = true;
+						return true;
+					}else if(bowColumn<column && (column-bowColumn<length)){
+						System.out.println("hit! 2");
+						hit[column-bowColumn] = true;
+						return true;
+					}else{
+						return false;
+					}
+				}
+			}else{
+				if(bowColumn==column){
+					if(bowRow==row){
+						System.out.println("hit! 3");
+						hit[0]=true;
+						return true;
+					}else if(bowRow<row && (row-bowRow<length)){
+						System.out.println("hit! 4");
+						hit[row-bowRow] = true;
+						return true;
+					}
 				}
 			}
 		}
-		return false; // TODO to be implemented
+		return false;
 	}
 	/**
 	 * Checks if ship is still floating an if can be still targeted.
@@ -78,8 +83,12 @@ public class Ship {
 	public boolean isSunk(){
 		int s=0;
 		for(int i=0; i<length; i++){
-			if(hit[i]==true){s++;}
+			if(hit[i]==true){
+				
+				s++;
+			}
 		}
+		System.out.println(this + " is hit: " + s + " times !!"); // TODO test output, remove for production code !!
 		return s==length; 
 	}
 	

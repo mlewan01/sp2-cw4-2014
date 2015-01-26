@@ -17,6 +17,7 @@ import battleship.Submarine;
 public class OceanTest {
 	
 	public static Ocean o;
+	public static Ship s;
 	static int r = 3;
 	static int c = 4;
 
@@ -26,7 +27,7 @@ public class OceanTest {
 		int c = 4;
 		o = new Ocean();
 		o.placeAllShipsRandomly();
-		Ship s = new Battleship();
+		s = new Battleship();
 		s.setHorizontal(true);
 		s.setBowRow(r);
 		s.setBowColumn(c);
@@ -81,6 +82,8 @@ public class OceanTest {
 	public void testShootAt(){
 		System.out.println("is horizontal??:  "+o.ships[r][c].isHorizontal());
 		System.out.println("true??:  " + o.ships[r][c].shootAt(r, 6));
+		s.isSunk();
+		
 	}
 }
 
