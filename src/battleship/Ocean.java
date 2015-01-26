@@ -27,11 +27,11 @@ public class Ocean {
 		shotsFired = 0;
 		hitCount = 0;
 		shipsSunk = 0;
-		for(int i=0; i<10; i++){
+/*		for(int i=0; i<10; i++){
 			for(int j=0; j<10;j++){
 				ships[i][j] = new Ship();
 			}
-		}
+		}*/
 	}
 	
 	/**

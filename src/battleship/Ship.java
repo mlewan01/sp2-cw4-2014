@@ -27,7 +27,8 @@ public class Ship {
 	 * @return true if ok to put a ship of this length with its bow in this location with the given orientation, false otherwise
 	 */
 	public boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean){
-		if(horizontal){
+		return true;
+		/*if(horizontal){
 			if(length+column<11){
 				for(int ir=row-1; ir<=row+1;ir++){
 					if(ir<0&&ir>9)continue;
@@ -60,7 +61,7 @@ public class Ship {
 			}else return false;
 		}
 		return true; // TODO to be implemented
-	}
+*/	}
 	/**
 	 * Puts the ship in the ocean. 
 	 * This involves giving values to the bowRow, bowColumn and horizontal instance variables in the ship and it also involves
