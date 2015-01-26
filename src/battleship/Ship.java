@@ -50,10 +50,22 @@ public class Ship {
 			if(bowRow==row){
 				if(bowColumn==column){
 					System.out.println("hit! 1");
-				}else if(bowColumn<column && bowColumn+length == column){
+					return true;
+				}else if(bowColumn<column && (column-bowColumn<length)){
 					System.out.println("hit! 2");
+					return true;
 				}else{
 					return false;
+				}
+			}
+		}else{
+			if(bowColumn==column){
+				if(bowRow==row){
+					System.out.println("hit! 3");
+					return true;
+				}else if(bowRow<row && (row-bowRow<length)){
+					System.out.println("hit! 4");
+					return true;
 				}
 			}
 		}

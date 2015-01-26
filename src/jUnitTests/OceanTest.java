@@ -17,15 +17,20 @@ import battleship.Submarine;
 public class OceanTest {
 	
 	public static Ocean o;
+	static int r = 3;
+	static int c = 4;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		int r = 3;
+		int c = 4;
 		o = new Ocean();
 		o.placeAllShipsRandomly();
 		Ship s = new Battleship();
-		s.setBowRow(2);
-		s.setBowColumn(2);
-		o.setShip(2, 2, s);
+		s.setHorizontal(true);
+		s.setBowRow(r);
+		s.setBowColumn(c);
+		o.setShip(r, c, s);
 		//o.setShip(9, 9, new Destroyer());
 		//o.setShip(9, 4, new Submarine());
 	}
@@ -74,8 +79,8 @@ public class OceanTest {
 	}
 	@Test
 	public void testShootAt(){
-		System.out.println("is horizontal??:  "+o.ships[2][2].isHorizontal());
-		o.ships[2][2].shootAt(2, 2);
+		System.out.println("is horizontal??:  "+o.ships[r][c].isHorizontal());
+		System.out.println("true??:  " + o.ships[r][c].shootAt(r, 6));
 	}
 }
 
