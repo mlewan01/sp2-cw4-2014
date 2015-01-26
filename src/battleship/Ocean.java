@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Ocean {
 	
-	protected Ship [][] ships;
+	public Ship [][] ships; // change to protected later, made public for tests
 	private int shotsFired;
 	private int hitCount;
 	private int shipsSunk;
@@ -51,6 +51,9 @@ public class Ocean {
 			
 			if(!isOccupied(r,c)){
 				if(s.okToPlaceShipAt(r, c, hor, this)){
+					s.setBowRow(r);
+					s.setBowColumn(c);
+					s.setHorizontal(hor);
 					s.placeShipAt(r, c, hor, this);
 					System.out.println("r: "+r+" c "+c+ "ship: "+s.toString());
 				}else{

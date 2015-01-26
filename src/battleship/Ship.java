@@ -45,6 +45,18 @@ public class Ship {
 	 * @return returns true if ship was hit, false otherwise 
 	 */
 	public boolean shootAt(int row, int column){
+		
+		if(horizontal){
+			if(bowRow==row){
+				if(bowColumn==column){
+					System.out.println("hit! 1");
+				}else if(bowColumn<column && bowColumn+length == column){
+					System.out.println("hit! 2");
+				}else{
+					return false;
+				}
+			}
+		}
 		return false; // TODO to be implemented
 	}
 	/**
@@ -56,7 +68,7 @@ public class Ship {
 		for(int i=0; i<length; i++){
 			if(hit[i]==true){s++;}
 		}
-		return s==length; // TODO to be implemented
+		return s==length; 
 	}
 	
 	// getters and setters
