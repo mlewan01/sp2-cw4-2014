@@ -27,6 +27,38 @@ public class Ship {
 	 * @return true if ok to put a ship of this length with its bow in this location with the given orientation, false otherwise
 	 */
 	public boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean){
+		if(horizontal){
+			if(length+column<11){
+				for(int ir=row-1; ir<=row+1;ir++){
+					if(ir<0&&ir>9)continue;
+					for(int ic=column-1; ic<=column+length; ic++){
+						if(ic<0){
+							System.out.println("ic or ir <0 or >9"+ir+"  "+ic);
+							continue;
+						}
+						if(ocean.isOccupied(ir, ic)){
+							return false;
+						}else return true;
+					}
+				}
+			}else return false;
+			
+		}else{
+			if(length+row<11){
+				for(int ir=row-1; ir<=row+length;ir++){
+					if(ir<0 && ir>9)continue;
+					for(int ic=column-1; ic<=column+1; ic++){
+						if(ic<0&&ic>9){
+							System.out.println("ic or ir <0 or >9"+ir+"  "+ic);
+							continue;
+						}
+						if(ocean.isOccupied(ir, ic)){
+							return false;
+						}else return true;
+					}
+				}
+			}else return false;
+		}
 		return true; // TODO to be implemented
 	}
 	/**

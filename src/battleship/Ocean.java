@@ -27,7 +27,11 @@ public class Ocean {
 		shotsFired = 0;
 		hitCount = 0;
 		shipsSunk = 0;
-		
+		for(int i=0; i<10; i++){
+			for(int j=0; j<10;j++){
+				ships[i][j] = new Ship();
+			}
+		}
 	}
 	
 	/**
@@ -41,6 +45,7 @@ public class Ocean {
 		Random ran = new Random();
 		
 		for(int i=0; i<10; i++){
+			//System.out.println("proba: "+ i); // TODO remove for production code !!
 			int r = ran.nextInt(10);
 			int c = ran.nextInt(10);
 			boolean hor = ran.nextBoolean();
@@ -55,7 +60,8 @@ public class Ocean {
 					s.setBowColumn(c);
 					s.setHorizontal(hor);
 					s.placeShipAt(r, c, hor, this);
-					System.out.println("r: "+r+" c "+c+ "ship: "+s.toString()); // TODO test output !!! remove for production !!
+					//System.out.println("r: "+r+" c "+c+ "ship: "+s.toString()); // TODO test output !!! remove for production !!
+				//break; // TODO to be remobved for pro
 				}else{
 					i--;
 					continue;
