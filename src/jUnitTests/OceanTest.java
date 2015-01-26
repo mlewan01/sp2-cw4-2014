@@ -53,14 +53,14 @@ public class OceanTest {
 	}
 	@Test
 	public void testToString() {
-		
-		for(int i = 0; i<10;i++){
+		o.print();
+		/*for(int i = 0; i<10;i++){
 			for(int j=0; j<10; j++){
 				System.out.print(o.getShipArray()[i][j].toString());
 			}
 			System.out.println();
 		}
-		System.out.println(Arrays.toString(o.getShipArray()[9]));
+		System.out.println(Arrays.toString(o.getShipArray()[9]));*/
 	}
 	@Test
 	public void testType(){

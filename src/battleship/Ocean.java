@@ -118,7 +118,17 @@ public class Ocean {
 	 * '.' to indicate a location never fired upon.
 	 */
 	public void print(){
-		System.out.println("Ocean !!"); // TODO !!!
+		System.out.print("  ");
+		for(int i = 0; i<10; i++){System.out.print(" "+i+" ");}
+		System.out.println();
+		for(int i = 0; i<10;i++){
+			System.out.print(i+" ");
+			for(int j=0; j<10; j++){
+				System.out.print(this.getShipArray()[i][j].toString());
+			}
+			System.out.println();
+		}
+		// TODO !!!
 	}
 	
 	// getters and setters
