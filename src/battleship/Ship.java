@@ -52,7 +52,11 @@ public class Ship {
 	 * @return true if every part of the ship has been hit, false otherwise
 	 */
 	public boolean isSunk(){
-		return false; // TODO to be implemented
+		int s=0;
+		for(int i=0; i<length; i++){
+			if(hit[i]==true){s++;}
+		}
+		return s==length; // TODO to be implemented
 	}
 	
 	// getters and setters
