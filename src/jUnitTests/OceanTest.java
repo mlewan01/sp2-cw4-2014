@@ -48,20 +48,20 @@ public class OceanTest {
 	public void tearDown() throws Exception {
 	}
 
-//	@Test
-//	public void testIsOccupied() {
-//		o.setShip(9, 9, new Destroyer());
-//		for(int i = 0; i<10;i++){
-//			for(int j=0; j<10; j++){
-//				System.out.print(o.isOccupied(i, j));
-//			}
-//			System.out.println();
-//		}
-//		for(Ship s: o.getShipArray()[1]){
-//			
-//		}
-//		//fail("Not yet implemented");
-//	}
+	@Test
+	public void testIsOccupied() {
+		o.setShip(9, 9, new Destroyer());
+		for(int i = 0; i<10;i++){
+			for(int j=0; j<10; j++){
+				System.out.print(o.isOccupied(i, j));
+			}
+			System.out.println();
+		}
+		for(Ship s: o.getShipArray()[1]){
+			
+		}
+		//fail("Not yet implemented");
+	}
 	@Test
 	public void testToString() {
 		o.print();

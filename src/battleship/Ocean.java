@@ -41,7 +41,7 @@ public class Ocean {
 	 */
 	public void placeAllShipsRandomly(){
 		Ship s = new Ship();
-		resetOcean();
+		this.resetOcean(); // populates the ocean with fresh emptySea segments
 		Random ran = new Random();
 		
 		for(int i=0; i<10; i++){

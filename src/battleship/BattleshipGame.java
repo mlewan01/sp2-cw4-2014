@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class BattleshipGame {
 	
-	public static void main(String[] a){
+	public static void main1(String[] a){
 		Ocean o = new Ocean();
 		o.placeAllShipsRandomly();
 	}
@@ -35,7 +35,7 @@ public class BattleshipGame {
 	/**
 	 * @param args
 	 */
-	public static void main1(String[] args) {
+	public static void main(String[] args) {
 		int [] xy = new int[2];
 		String s;
 		boolean mustGameGoOn = true;
