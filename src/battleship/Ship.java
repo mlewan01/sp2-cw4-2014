@@ -31,38 +31,49 @@ public class Ship {
 		if(horizontal){
 			if(length+column<11){
 				for(int ir=row-1; ir<=row+1;ir++){
-					if(ir<0 || ir>9)continue;
+  					if(ir<0 || ir>9){// check ir to not go out of the boundry
+  						System.out.println("1. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+this.horizontal);
+  						continue; 
+  					}
 					for(int ic=column-1; ic<=column+length; ic++){
-						if(ic<0){
-							System.out.println("ic or ir <0 or >9  "+ir+"  "+ic);
+						if(ic<0 || ic>9){ // checks ic to not go out of the boundry
+							System.out.println("2. ic <0 or >9  c: "+ic+" r: "+row+" ship: "+this.toString()+" h? "+this.horizontal); // TODO to be removed
 							continue;
 						}
 						if(ocean.isOccupied(ir, ic)){
 							return false;
-						}else {
-							System.out.println(" is Ok to place ship");
-							return true;
+//						}else {
+//  							System.out.println(" is Ok to place ship"); // TODO to be removed
+//							return true;
 						}
 					}
+					System.out.println(" is Ok to place ship, new !!!"); // TODO to be removed
+					return true;
+					
 				}
 			}else return false;
 			
 		}else{
 			if(length+row<11){
 				for(int ir=row-1; ir<=row+length;ir++){
-					if(ir<0 || ir>9)continue;
+  					if(ir<0 || ir>9){ // check ir to not go out of the boundry
+  						System.out.println("3. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+this.horizontal);
+  						continue;
+  					}
 					for(int ic=column-1; ic<=column+1; ic++){
-						if(ic<0&&ic>9){
-							System.out.println("ic or ir <0 or >9  "+ir+"  "+ic);
+						if(ic<0 || ic>9){ // checks ic to not go out of the boundry
+							System.out.println("2. ic <0 or >9  c: "+ic+" r: "+row+" ship: "+this.toString()+" h? "+this.horizontal); // TODO to be removed
 							continue;
 						}
 						if(ocean.isOccupied(ir, ic)){
 							return false;
-						}else {
-							System.out.println(" is Ok to place ship");
-							return true;
+//						}else {
+//  							System.out.println(" is Ok to place ship"); // TOBE to be removed
+//							return true;
 						}
 					}
+					System.out.println(" is Ok to place ship, new !!!"); // TODO to be removed
+					return true;
 				}
 			}else return false;
 		}
@@ -119,7 +130,7 @@ public class Ship {
 	/**
 	 * Checks if ship is still floating an if can be still targeted.
 	 * @return true if every part of the ship has been hit, false otherwise
-	 */
+/	 */
 	public boolean isSunk(){
 		int s=0;
 		for(int i=0; i<length; i++){

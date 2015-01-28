@@ -26,12 +26,15 @@ public class OceanTest {
 		int r = 3;
 		int c = 4;
 		o = new Ocean();
-		o.placeAllShipsRandomly();
+		
 		s = new Battleship();
 		s.setHorizontal(true);
 		s.setBowRow(r);
 		s.setBowColumn(c);
-		o.setShip(r, c, s);
+//		o.setShip(r, c, s);
+//		o.setShip(5, c, s);
+//		o.setShip(0,3,s);
+		o.placeAllShipsRandomly();
 		//o.setShip(9, 9, new Destroyer());
 		//o.setShip(9, 4, new Submarine());
 	}

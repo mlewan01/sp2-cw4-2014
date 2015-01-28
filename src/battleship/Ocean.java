@@ -24,6 +24,7 @@ public class Ocean {
 	 */
 	public Ocean(){
 		ships = new Ship[10][10];
+		this.resetOcean(); // populates the ocean with fresh emptySea segments
 		shotsFired = 0;
 		hitCount = 0;
 		shipsSunk = 0;
@@ -41,7 +42,7 @@ public class Ocean {
 	 */
 	public void placeAllShipsRandomly(){
 		Ship s = new Ship();
-		this.resetOcean(); // populates the ocean with fresh emptySea segments
+		//this.resetOcean(); // populates the ocean with fresh emptySea segments // TODO maybe to be removed ??
 		Random ran = new Random();
 		
 		for(int i=0; i<10; i++){
