@@ -23,8 +23,8 @@ public class OceanTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		int r = 3;
-		int c = 4;
+		r = 3;
+		c = 4;
 		o = new Ocean();
 		
 		s = new Battleship();

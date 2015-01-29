@@ -30,14 +30,15 @@ public class Ship {
 		//return true;
 		if(horizontal){
 			if(length+column<11){
+				System.out.println("type: "+toString()+" r: "+row+" c: "+column+" h? "+horizontal);
 				for(int ir=row-1; ir<=row+1;ir++){
   					if(ir<0 || ir>9){// check ir to not go out of the boundry
-  						System.out.println("1. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+this.horizontal);
+  						System.out.println("1. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+horizontal);
   						continue; 
   					}
 					for(int ic=column-1; ic<=column+length; ic++){
 						if(ic<0 || ic>9){ // checks ic to not go out of the boundry
-							System.out.println("2. ic <0 or >9  c: "+ic+" r: "+row+" ship: "+this.toString()+" h? "+this.horizontal); // TODO to be removed
+							System.out.println("2. ic <0 or >9  r: "+ir+" c: "+ic+" ship: "+this.toString()+" h? "+horizontal); // TODO to be removed
 							continue;
 						}
 						if(ocean.isOccupied(ir, ic)){
@@ -47,7 +48,7 @@ public class Ship {
 //							return true;
 						}
 					}
-					System.out.println(" is Ok to place ship, new !!!"); // TODO to be removed
+					System.out.println(" is Ok --"); // TODO to be removed
 					return true;
 					
 				}
@@ -55,14 +56,15 @@ public class Ship {
 			
 		}else{
 			if(length+row<11){
+				System.out.println("type: "+toString()+" r: "+row+" c: "+column+" h? "+horizontal);
 				for(int ir=row-1; ir<=row+length;ir++){
   					if(ir<0 || ir>9){ // check ir to not go out of the boundry
-  						System.out.println("3. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+this.horizontal);
+  						System.out.println("3. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+horizontal);
   						continue;
   					}
 					for(int ic=column-1; ic<=column+1; ic++){
 						if(ic<0 || ic>9){ // checks ic to not go out of the boundry
-							System.out.println("2. ic <0 or >9  c: "+ic+" r: "+row+" ship: "+this.toString()+" h? "+this.horizontal); // TODO to be removed
+							System.out.println("4. ic <0 or >9  c: "+ic+" r: "+ir+" ship: "+this.toString()+" h? "+horizontal); // TODO to be removed
 							continue;
 						}
 						if(ocean.isOccupied(ir, ic)){
@@ -72,7 +74,7 @@ public class Ship {
 //							return true;
 						}
 					}
-					System.out.println(" is Ok to place ship, new !!!"); // TODO to be removed
+					System.out.println(" is Ok |"); // TODO to be removed
 					return true;
 				}
 			}else return false;
