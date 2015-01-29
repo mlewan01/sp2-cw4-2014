@@ -41,6 +41,62 @@ public class Ship {
 							System.out.println("2. ic <0 or >9  r: "+ir+" c: "+ic+" ship: "+this.toString()+" h? "+horizontal); // TODO to be removed
 							continue;
 						}
+						System.out.println("isOccupied? "+ir+" "+ic);
+						if(ocean.isOccupied(ir, ic)){
+							System.out.println("is Occupied!! "+ir+" "+ic);
+							return false;
+//						}else {
+//  							System.out.println(" is Ok to place ship"); // TODO to be removed
+//							return true;
+						}
+					}
+				}
+				System.out.println(" is Ok --"); // TODO to be removed
+				return true;
+			}else return false;
+			
+		}else{
+			if(length+row<11){
+				System.out.println("type: "+toString()+" r: "+row+" c: "+column+" h? "+horizontal);
+				for(int ir=row-1; ir<=row+length;ir++){
+  					if(ir<0 || ir>9){ // check ir to not go out of the boundry
+  						System.out.println("3. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+horizontal);
+  						continue;
+  					}
+					for(int ic=column-1; ic<=column+1; ic++){
+						if(ic<0 || ic>9){ // checks ic to not go out of the boundry
+							System.out.println("4. ic <0 or >9  c: "+ic+" r: "+ir+" ship: "+this.toString()+" h? "+horizontal); // TODO to be removed
+							continue;
+						}
+						if(ocean.isOccupied(ir, ic)){
+							return false;
+//						}else {
+//  							System.out.println(" is Ok to place ship"); // TOBE to be removed
+//							return true;
+						}
+					}
+				}
+				System.out.println(" is Ok |"); // TODO to be removed
+				return true;
+			}else return false;
+		}
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public boolean okToPlaceShipAt1111(int row, int column, boolean horizontal, Ocean ocean){
+		//return true;
+		if(horizontal){
+			if(length+column<11){
+				System.out.println("type: "+toString()+" r: "+row+" c: "+column+" h? "+horizontal);
+				for(int ir=row-1; ir<=row+1;ir++){
+  					if(ir<0 || ir>9){// check ir to not go out of the boundry
+  						System.out.println("1. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+horizontal);
+  						continue; 
+  					}
+					for(int ic=column-1; ic<=column+length; ic++){
+						if(ic<0 || ic>9){ // checks ic to not go out of the boundry
+							System.out.println("2. ic <0 or >9  r: "+ir+" c: "+ic+" ship: "+this.toString()+" h? "+horizontal); // TODO to be removed
+							continue;
+						}
 						if(ocean.isOccupied(ir, ic)){
 							return false;
 //						}else {

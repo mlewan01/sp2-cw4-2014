@@ -72,6 +72,12 @@ public class ShipTest {
 	@Test
 	public void testOkToPlaceShip(){
 		o.print();
-		System.out.println(o.isOccupied(2, 5));
+		System.out.println(o.isOccupied(2, 3));
+		System.out.println(o.isOccupied(3, 3));
+		System.out.println(o.isOccupied(r, c));
+		System.out.println(o.isOccupied(r, 6));
+		System.out.println(o.isOccupied(r, 7));
+		System.out.println(o.isOccupied(r, 8));
+		s.okToPlaceShipAt(2,3,true,o);
 	}
 }
