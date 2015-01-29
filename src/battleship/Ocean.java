@@ -88,8 +88,9 @@ public class Ocean {
 				for(int i=1; i<4; i++){
 					c -=1;
 					if(c>=0){
-						if(ships[row][c].getShipType()!="emptySea"){
-							if(ships[row][c].isHorizontal())
+						Ship s = ships[row][c];
+						if(s.getShipType()!="emptySea"){
+							if(s.isHorizontal() && s.length>column-c) // TODO important might need adjustments
 							return  true;
 						}
 					}
@@ -102,8 +103,9 @@ public class Ocean {
 				for(int i=1; i<4; i++){
 					r-=1;
 					if(r>=0){
-						if(ships[r][column].getShipType()!="emptySea"){
-							if(!ships[r][column].isHorizontal())
+						Ship s =ships[r][column];
+						if(s.getShipType()!="emptySea"){
+							if(!s.isHorizontal() && s.length>row-r) // TODO important might need adjustments 
 							return true;
 						}
 					}
