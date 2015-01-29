@@ -11,6 +11,7 @@ package battleship;
  * what: sp2-cw4-2014 Battleship game
  */
 public class Ship {
+	protected String ts;
 	private int bowRow; // which contains the bow (front) of the ship (0 to 9)
 	private int bowColumn; // which contains the bow (front) of the ship (0 to 9)
 	protected int length; // the number of squares occupied by the ship. 
@@ -18,7 +19,9 @@ public class Ship {
 	protected boolean [] hit = new boolean[4]; // to indicate whether that part of the ship has been hit.
 									 //only battleship uses 4 locations, see "length"
 	
-	
+	public Ship(){
+		ts = "s";
+	}
 	/**
 	 * Checks if is ok to put the ship in given location.
 	 * The ship must not overlap another ship, or touch another ship (vertically, horizontally, or diagonally), 
@@ -27,116 +30,46 @@ public class Ship {
 	 * @return true if ok to put a ship of this length with its bow in this location with the given orientation, false otherwise
 	 */
 	public boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean){
-		//return true;
 		if(horizontal){
 			if(length+column<11){
-				System.out.println("type: "+toString()+" r: "+row+" c: "+column+" h? "+horizontal);
 				for(int ir=row-1; ir<=row+1;ir++){
   					if(ir<0 || ir>9){// check ir to not go out of the boundry
-  						System.out.println("1. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+horizontal);
   						continue; 
   					}
 					for(int ic=column-1; ic<=column+length; ic++){
 						if(ic<0 || ic>9){ // checks ic to not go out of the boundry
-							System.out.println("2. ic <0 or >9  r: "+ir+" c: "+ic+" ship: "+this.toString()+" h? "+horizontal); // TODO to be removed
 							continue;
 						}
-						System.out.println("isOccupied? "+ir+" "+ic);
 						if(ocean.isOccupied(ir, ic)){
-							System.out.println("is Occupied!! "+ir+" "+ic);
+//							System.out.println("is Occupied!! "+toString()+" "+ir+" "+ic); // TODO to be removed !!
 							return false;
-//						}else {
-//  							System.out.println(" is Ok to place ship"); // TODO to be removed
-//							return true;
 						}
 					}
 				}
-				System.out.println(" is Ok --"); // TODO to be removed
+				System.out.println(" is Ok -- " +toString()+ " "+row+" "+column); // TODO to be removed
 				return true;
 			}else return false;
 			
 		}else{
 			if(length+row<11){
-				System.out.println("type: "+toString()+" r: "+row+" c: "+column+" h? "+horizontal);
 				for(int ir=row-1; ir<=row+length;ir++){
   					if(ir<0 || ir>9){ // check ir to not go out of the boundry
-  						System.out.println("3. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+horizontal);
   						continue;
   					}
 					for(int ic=column-1; ic<=column+1; ic++){
 						if(ic<0 || ic>9){ // checks ic to not go out of the boundry
-							System.out.println("4. ic <0 or >9  c: "+ic+" r: "+ir+" ship: "+this.toString()+" h? "+horizontal); // TODO to be removed
 							continue;
 						}
 						if(ocean.isOccupied(ir, ic)){
+//							System.out.println("is Occupied!! "+toString()+" "+ir+" "+ic);  // TODO  to be removed for production !!
 							return false;
-//						}else {
-//  							System.out.println(" is Ok to place ship"); // TOBE to be removed
-//							return true;
 						}
 					}
 				}
-				System.out.println(" is Ok |"); // TODO to be removed
+				System.out.println(" is Ok | " +toString()+ " "+row+" "+column); // TODO to be removed
 				return true;
 			}else return false;
 		}
-	}
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public boolean okToPlaceShipAt1111(int row, int column, boolean horizontal, Ocean ocean){
-		//return true;
-		if(horizontal){
-			if(length+column<11){
-				System.out.println("type: "+toString()+" r: "+row+" c: "+column+" h? "+horizontal);
-				for(int ir=row-1; ir<=row+1;ir++){
-  					if(ir<0 || ir>9){// check ir to not go out of the boundry
-  						System.out.println("1. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+horizontal);
-  						continue; 
-  					}
-					for(int ic=column-1; ic<=column+length; ic++){
-						if(ic<0 || ic>9){ // checks ic to not go out of the boundry
-							System.out.println("2. ic <0 or >9  r: "+ir+" c: "+ic+" ship: "+this.toString()+" h? "+horizontal); // TODO to be removed
-							continue;
-						}
-						if(ocean.isOccupied(ir, ic)){
-							return false;
-//						}else {
-//  							System.out.println(" is Ok to place ship"); // TODO to be removed
-//							return true;
-						}
-					}
-					System.out.println(" is Ok --"); // TODO to be removed
-					return true;
-					
-				}
-			}else return false;
-			
-		}else{
-			if(length+row<11){
-				System.out.println("type: "+toString()+" r: "+row+" c: "+column+" h? "+horizontal);
-				for(int ir=row-1; ir<=row+length;ir++){
-  					if(ir<0 || ir>9){ // check ir to not go out of the boundry
-  						System.out.println("3. ir <0 || >9  r: "+ir+" c: "+column+" ship: "+this.toString()+" h? "+horizontal);
-  						continue;
-  					}
-					for(int ic=column-1; ic<=column+1; ic++){
-						if(ic<0 || ic>9){ // checks ic to not go out of the boundry
-							System.out.println("4. ic <0 or >9  c: "+ic+" r: "+ir+" ship: "+this.toString()+" h? "+horizontal); // TODO to be removed
-							continue;
-						}
-						if(ocean.isOccupied(ir, ic)){
-							return false;
-//						}else {
-//  							System.out.println(" is Ok to place ship"); // TOBE to be removed
-//							return true;
-						}
-					}
-					System.out.println(" is Ok |"); // TODO to be removed
-					return true;
-				}
-			}else return false;
-		}
-		System.out.println(" is Ok to place ship");
-		return true; // TODO to be implemented
 	}
 	/**
 	 * Puts the ship in the ocean. 
@@ -260,6 +193,7 @@ public class Ship {
 	 * @return String containing state of the object	
 	 */
 	public String toString(){
-		return "sh ";
+		String s = isHorizontal() ? "-": "|"; // TODO to be remved
+		return " "+ts+s;
 	}
 }

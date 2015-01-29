@@ -51,17 +51,18 @@ public class Ocean {
 			int c = ran.nextInt(10);
 			boolean hor = ran.nextBoolean();
 			if(i==0)s=new Battleship();
-			if(i==1)s=new Cruiser();
-			if(i==3)s=new Destroyer();
-			if(i==6)s=new Submarine();
+			if(i>=1)s=new Cruiser();
+			if(i>=3)s=new Destroyer();
+			if(i>=6)s=new Submarine();
+			
+			s.setBowRow(r);
+			s.setBowColumn(c);
+			s.setHorizontal(hor);
 			
 			if(!isOccupied(r,c)){
 				if(s.okToPlaceShipAt(r, c, hor, this)){
-					s.setBowRow(r);
-					s.setBowColumn(c);
-					s.setHorizontal(hor);
 					s.placeShipAt(r, c, hor, this);
-					//System.out.println("r: "+r+" c "+c+ "ship: "+s.toString()); // TODO test output !!! remove for production !!
+					System.out.println("r: "+r+" c "+c+ "ship: "+s.toString()+ "hor? "+hor); // TODO test output !!! remove for production !!
 				//break; // TODO to be remobved for pro
 				}else{
 					i--;
