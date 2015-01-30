@@ -63,9 +63,7 @@ public class Ocean {
 			if(!isOccupied(r,c)){
 				if(s.okToPlaceShipAt(r, c, hor, this)){
 					s.placeShipAt(r, c, hor, this);
-//					temp[i] = s;
-					System.out.println("r: "+r+" c "+c+ "ship: "+s.toString()+ "hor? "+hor); // TODO test output !!! remove for production !!
-				//break; // TODO to be remobved for pro
+//					System.out.println("r: "+r+" c "+c+ "ship: "+s.toString()+ "hor? "+hor); // TODO test output !!! remove for production !!
 				}else{
 					i--;
 					continue;
@@ -99,9 +97,9 @@ public class Ocean {
 				Ship sh = this.ships[j][i];
 				int l = sh.length;
 				if(sh.getShipType()!="emptySea" && !sh.horizontal && l>1){
-					System.out.println("test n: " + n);
+//					System.out.println("test n: " + n);  // TODO to be removed
 					if(n==0){
-						System.out.println("  test2 n: " +n);
+//						System.out.println("  test2 n: " +n); // TODO to be removed
 						for(int k=j+1; k<j+l; k++){
 							if(k<10){
 								this.ships[k][i] = sh;
@@ -154,43 +152,43 @@ public class Ocean {
 		}
 		return false; 
 	}
-	public Ship adjecentShipUp(int row, int column, boolean horizontal){
-		int r = row;
-		int c = column;
-		Ship s = ships[row][column];
-		if(s.getShipType()!="emptySea"){
-			return s;
-		}else{
-			if(column>0 && horizontal){
-				for(int i=1; i<4; i++){
-					c --;
-					if(c>=0){
-						s = ships[row][c];
-						if(s.getShipType()!="emptySea"){
-							if(s.isHorizontal() && s.length>column-c) // TODO important might need adjustments
-							return  s;
-						}
-					}
-					
-				}
-			}
-			r = row;
-			c = column;
-			if(row>0 && !horizontal){
-				for(int i=1; i<4; i++){
-					r--;
-					if(r>=0){
-						s =ships[r][column];
-						if(s.getShipType()!="emptySea"){
-							if(!s.isHorizontal() && s.length>row-r) // TODO important might need adjustments 
-							return s;
-						}
-					}
-				}
-			}
-		}
-		return null;
-	}
+//	public Ship adjecentShipUp(int row, int column, boolean horizontal){ // TODO to be removed
+//		int r = row;
+//		int c = column;
+//		Ship s = ships[row][column];
+//		if(s.getShipType()!="emptySea"){
+//			return s;
+//		}else{
+//			if(column>0 && horizontal){
+//				for(int i=1; i<4; i++){
+//					c --;
+//					if(c>=0){
+//						s = ships[row][c];
+//						if(s.getShipType()!="emptySea"){
+//							if(s.isHorizontal() && s.length>column-c) // TODO important might need adjustments
+//							return  s;
+//						}
+//					}
+//					
+//				}
+//			}
+//			r = row;
+//			c = column;
+//			if(row>0 && !horizontal){
+//				for(int i=1; i<4; i++){
+//					r--;
+//					if(r>=0){
+//						s =ships[r][column];
+//						if(s.getShipType()!="emptySea"){
+//							if(!s.isHorizontal() && s.length>row-r) // TODO important might need adjustments 
+//							return s;
+//						}
+//					}
+//				}
+//			}
+//		}
+//		return null;
+//	}
 	/**
 	 * Returns true if the given location contains a real ship, still afloat, (not an EmptySea), false if it does not. 
 	 * In addition, this method updates the number of shots that have been fired, and the number of hits. 
@@ -207,7 +205,7 @@ public class Ocean {
 	 * 'S' to indicate a location fired upon and hit a ship, '-' to indicate fired and missed location, 'x' to indicate sunken ship, 
 	 * '.' to indicate a location never fired upon.
 	 */
-	public void print(){
+	public void print(){// TODO !!!
 		System.out.print("  ");
 		for(int i = 0; i<10; i++){System.out.print(" "+i+" ");}
 		System.out.println();
@@ -219,7 +217,22 @@ public class Ocean {
 			}
 			System.out.println();
 		}
-		// TODO !!!
+	}
+	/**
+	 * TODO 
+	 */
+	public void printShipsConfiguration(){
+		System.out.print("  ");
+		for(int i = 0; i<10; i++){System.out.print(" "+i+" ");}
+		System.out.println();
+		for(int i = 0; i<10;i++){
+			System.out.print(i+" ");
+			for(int j=0; j<10; j++){
+				Ship s = this.getShipArray()[i][j];
+				System.out.print(s.toString());
+			}
+			System.out.println();
+		}
 	}
 	
 	// getters and setters

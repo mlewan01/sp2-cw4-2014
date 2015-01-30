@@ -43,7 +43,7 @@ public class Ship {
 						}
 					}
 				}
-				System.out.println(" is Ok -- " +toString()+ " "+row+" "+column); // TODO to be removed
+//				System.out.println(" is Ok -- " +toString()+ " "+row+" "+column); // TODO to be removed
 				return true;
 			}else return false;
 			
@@ -63,7 +63,7 @@ public class Ship {
 						}
 					}
 				}
-				System.out.println(" is Ok | " +toString()+ " "+row+" "+column); // TODO to be removed
+//				System.out.println(" is Ok | " +toString()+ " "+row+" "+column); // TODO to be removed
 				return true;
 			}else return false;
 		}
