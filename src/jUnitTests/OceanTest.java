@@ -56,7 +56,7 @@ public class OceanTest {
 
 	@Test
 	public void testIsOccupied() {
-		o.setShip(9, 9, new Destroyer());
+		//o.setShip(9, 9,( new Destroyer().setBowColumn(9)).setBowRow(9););
 		for(int i = 0; i<10;i++){
 			for(int j=0; j<10; j++){
 				System.out.print(o.isOccupied(i, j));
@@ -100,8 +100,9 @@ public class OceanTest {
 	public void testUserInput(){
 		boolean test = true;
 		BattleshipGame bg = new BattleshipGame();
-		while(test){
+		
 //			int[]xy = bg.userImput("insert some coordinates...");
+			o.shootAt(2, 1);
 			o.shootAt(2, 2);
 			o.shootAt(3, 2);
 			o.shootAt(4, 0);
@@ -127,9 +128,9 @@ public class OceanTest {
 			o.shootAt(6, 5);
 			o.shootAt(6, 5);
 			o.shootAt(6, 5);
+			o.shootAt(9, 9);
 			o.print();
 			
-		}
 	}
 }
 
