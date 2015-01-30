@@ -40,6 +40,8 @@ public class BattleshipGame {
 		o.placeAllShipsRandomly();
 		
 		int [] xy = new int[2];
+		xy[0]=3;
+		xy[1]=3;
 		String s;
 		boolean mustGameGoOn = true;
 		Scanner sc = new Scanner(System.in);
@@ -79,6 +81,7 @@ public class BattleshipGame {
 				}
 				xy[0] =sc.nextInt(); 
 				xy[1]=sc.nextInt();
+				
 			}catch(InputMismatchException e){
 			 	System.out.println("wrong input, please try again...");
 			 	sc.nextLine();
