@@ -193,7 +193,7 @@ public class Ship {
 	 * @return String containing state of the object	
 	 */
 	public String toString(){
-		String s = isHorizontal() ? "-": "|"; // TODO to be remved
-		return " "+ts+s;
+		//String s = isHorizontal() ? "-": "|"; // TODO to be remved
+		return " "+ts+" ";
 	}
 }
