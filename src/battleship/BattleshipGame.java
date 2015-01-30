@@ -36,6 +36,9 @@ public class BattleshipGame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		Ocean o = new Ocean();
+		o.placeAllShipsRandomly();
+		
 		int [] xy = new int[2];
 		String s;
 		boolean mustGameGoOn = true;
@@ -44,8 +47,10 @@ public class BattleshipGame {
 		while (sc.hasNext() && (sc.nextLine().equalsIgnoreCase("y"))){
 			System.out.println("gra w toku");
 			do{
+				o.printShipsConfiguration();
 				xy = userImput("Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space or \"\\n\". \nEnter \"exit\" to exit the game.");
-				
+				o.shootAt(xy[0], xy[1]);
+				o.print();
 			}while(mustGameGoOn);
 			System.out.println("Would you like to play the game again? [Y/N]");
 		}
@@ -92,7 +97,7 @@ public class BattleshipGame {
 				continue;
 			}
 		}
-
+		sc.close();
 		return xy;
 	}
 }

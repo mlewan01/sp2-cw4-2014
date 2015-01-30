@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import battleship.Battleship;
+import battleship.BattleshipGame;
 import battleship.Destroyer;
 import battleship.Ocean;
 import battleship.Ship;
@@ -27,14 +28,14 @@ public class OceanTest {
 		c = 4;
 		o = new Ocean();
 		
-		s = new Battleship();
-		s.setHorizontal(true);
-		s.setBowRow(r);
-		s.setBowColumn(c);
-		o.setShip(r, c, s);
-		o.setShip(r, 5, s);
-		o.setShip(r, 6, s);
-		o.setShip(r, 7, s);
+//		s = new Battleship();
+//		s.setHorizontal(true);
+//		s.setBowRow(r);
+//		s.setBowColumn(c);
+//		o.setShip(r, c, s);
+//		o.setShip(r, 5, s);
+//		o.setShip(r, 6, s);
+//		o.setShip(r, 7, s);
 //		o.setShip(0,3,s);
 		o.placeAllShipsRandomly();
 		//o.setShip(9, 9, new Destroyer());
@@ -70,6 +71,8 @@ public class OceanTest {
 	@Test
 	public void testToString() {
 		o.printShipsConfiguration();
+		System.out.println();
+		 o.print();
 		/*for(int i = 0; i<10;i++){
 			for(int j=0; j<10; j++){
 				System.out.print(o.getShipArray()[i][j].toString());
@@ -85,12 +88,48 @@ public class OceanTest {
 //	}
 	@Test
 	public void testShootAt(){
+		System.out.println();
 		System.out.println("is horizontal??:  "+o.ships[r][c].isHorizontal());
 		for(boolean b:o.ships[r][c].hit){System.out.println(b);}
 		System.out.println("true??:  " + o.ships[r][c].shootAt(r, 6));
 		System.out.println("true??:  " + o.ships[r][c].shootAt(r, 7));
-		s.isSunk();
+		//s.isSunk();
 		for(boolean b:o.ships[r][c].hit){System.out.println(b);}
+	}
+	@Test
+	public void testUserInput(){
+		boolean test = true;
+		BattleshipGame bg = new BattleshipGame();
+		while(test){
+//			int[]xy = bg.userImput("insert some coordinates...");
+			o.shootAt(2, 2);
+			o.shootAt(3, 2);
+			o.shootAt(4, 0);
+			o.shootAt(5, 2);
+			o.shootAt(6, 4);
+			o.shootAt(7, 6);
+			o.shootAt(8, 8);
+			o.shootAt(9, 0);
+			o.shootAt(2, 1);
+			o.shootAt(3, 3);
+			o.shootAt(4, 5);
+			o.shootAt(5, 7);
+			o.shootAt(1, 0);
+			o.shootAt(1, 2);
+			o.shootAt(2, 0);
+			o.shootAt(2, 2);
+			o.shootAt(3, 4);
+			o.shootAt(3, 6);
+			o.shootAt(4, 8);
+			o.shootAt(4, 0);
+			o.shootAt(5, 1);
+			o.shootAt(5, 3);
+			o.shootAt(6, 5);
+			o.shootAt(6, 5);
+			o.shootAt(6, 5);
+			o.print();
+			
+		}
 	}
 }
 

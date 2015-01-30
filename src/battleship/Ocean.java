@@ -41,9 +41,8 @@ public class Ocean {
 	 * You will want to use the Random class in the java.util package, so look that up in the Java API.
 	 */
 	public void placeAllShipsRandomly(){
-		Ship[] temp = new Ship[10];
 		Ship s = new Ship();
-		//this.resetOcean(); // populates the ocean with fresh emptySea segments // TODO maybe to be removed ??
+		this.resetOcean(); // populates the ocean with fresh emptySea segments // TODO maybe to be removed ??
 		Random ran = new Random();
 		
 		for(int i=0; i<10; i++){
@@ -196,8 +195,42 @@ public class Ocean {
 	 * Once a ship has been sunk, additional shots at its location should return false.
 	 * @return true if the ship is still floating, false otherwise
 	 */
-	boolean shootAt(int row, int column){
-		return false; // TODO !!
+	public boolean shootAt(int row, int column){
+		this.shotsFired++;
+		Ship s = ships[row][column];
+		
+		if(s.getShipType() == "emptySea"){
+			s.hit[0]=true;
+			return false;
+		}else {
+			if(s.isHorizontal()){
+				int h = column-s.getBowColumn(); // to determine the right segment of the ship
+				if(s.isSunk()){
+					return false;
+				}else {
+					if(s.hit[h]) {
+						return true;
+					}else {
+						s.hit[h] = true;
+						this.hitCount++;
+						return true;
+					}
+				}
+			}else{
+				int h = row-s.getBowRow();
+				if(s.isSunk()){
+					return false;
+				}else {
+					if(s.hit[h]){
+						return true;
+					}else{
+						s.hit[h] = true;
+						this.hitCount++;
+						return true;
+					}
+				}
+			}
+		}
 	}
 	/**
 	 * Prints the state of the Ocean. 
@@ -212,8 +245,27 @@ public class Ocean {
 		for(int i = 0; i<10;i++){
 			System.out.print(i+" ");
 			for(int j=0; j<10; j++){
-				Ship s = this.getShipArray()[i][j];
-				System.out.print(s.toString());
+				Ship s = this.ships[i][j];
+				if(s.isHorizontal()){
+					int h = j-s.getBowColumn(); // to determine the right segment of the ship
+					if(s.isSunk()){
+						System.out.print(" x ");
+					}else if(s.hit[h]){
+						if(s.getShipType() == "emptySea"){
+							System.out.print(" - ");
+						}else System.out.print(" S ");
+					}else System.out.print(" . ");
+					
+				}else{
+					int h = i-s.getBowRow();
+					if(s.isSunk()){
+						System.out.print(" x ");
+					}else if(s.hit[h]){
+						if(s.getShipType() == "emptySea"){
+							System.out.print(" - ");
+						}else System.out.print(" S ");
+					}else System.out.print(" . ");
+				}
 			}
 			System.out.println();
 		}
@@ -290,7 +342,10 @@ public class Ocean {
 	public void resetOcean(){
 		for(int i=0; i<10;i++){
 			for(int j=0; j<10;j++){
-				ships[i][j]=new EmptySea();
+				Ship s = new EmptySea();
+				s.setBowRow(i);
+				s.setBowColumn(j);
+				ships[i][j]=s;
 			}
 		}
 	}

@@ -127,7 +127,7 @@ public class Ship {
 				s++;
 			}
 		}
-		System.out.println(this + " is hit: " + s + " times !!"); // TODO test output, remove for production code !!
+//		System.out.println(this + " is hit: " + s + " times !!"); // TODO test output, remove for production code !!
 		return s==length; 
 	}
 	
