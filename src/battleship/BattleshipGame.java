@@ -17,7 +17,7 @@ public class BattleshipGame {
 	
 	public static void main1(String[] a){
 		Ocean o = new Ocean();
-		o.placeAllShipsRandomly();
+		o.placeAllShipsRandomly(); 
 	}
 	public static void main2(String[] arg){
 		Ocean o = new Ocean();
