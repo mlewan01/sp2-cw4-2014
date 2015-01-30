@@ -19,7 +19,6 @@ public class Submarine extends Ship{
 		super.length = 1;
 		type = "submarine";
 		super.horizontal = true;
-		super.ts = "s";
 	}
 	@Override
 	public boolean isHorizontal(){
@@ -29,5 +28,9 @@ public class Submarine extends Ship{
 	@Override
 	public String getShipType(){
 		return type;
+	}
+	@Override
+	public String toString(){
+		return " s ";
 	}
 }

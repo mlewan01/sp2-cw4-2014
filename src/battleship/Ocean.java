@@ -41,6 +41,7 @@ public class Ocean {
 	 * You will want to use the Random class in the java.util package, so look that up in the Java API.
 	 */
 	public void placeAllShipsRandomly(){
+		Ship[] temp = new Ship[10];
 		Ship s = new Ship();
 		//this.resetOcean(); // populates the ocean with fresh emptySea segments // TODO maybe to be removed ??
 		Random ran = new Random();
@@ -62,6 +63,7 @@ public class Ocean {
 			if(!isOccupied(r,c)){
 				if(s.okToPlaceShipAt(r, c, hor, this)){
 					s.placeShipAt(r, c, hor, this);
+//					temp[i] = s;
 					System.out.println("r: "+r+" c "+c+ "ship: "+s.toString()+ "hor? "+hor); // TODO test output !!! remove for production !!
 				//break; // TODO to be remobved for pro
 				}else{
@@ -73,6 +75,44 @@ public class Ocean {
 				continue;
 			}
 		}
+		
+		for(int i=0; i<10;i++){
+			int m=0;
+			for(int j=0; j<10; j++){
+				Ship sh = this.ships[i][j];
+				int l = sh.length;
+				if(sh.getShipType()!="emptySea" && sh.horizontal && l>1){
+					if(m==0){
+						for(int k=j+1; k<j+l; k++){
+							if(k<10){
+								this.ships[i][k] = sh;
+								m++;
+							}
+						}
+					}else m--;
+				}
+			}
+		}
+		for(int i=0; i<10;i++){
+			int n=0;
+			for(int j=0; j<10; j++){
+				Ship sh = this.ships[j][i];
+				int l = sh.length;
+				if(sh.getShipType()!="emptySea" && !sh.horizontal && l>1){
+					System.out.println("test n: " + n);
+					if(n==0){
+						System.out.println("  test2 n: " +n);
+						for(int k=j+1; k<j+l; k++){
+							if(k<10){
+								this.ships[k][i] = sh;
+								n++;
+							}
+						}
+					}else n--;
+				}
+			}
+		}
+		
 	}
 	/**
 	 * Returns true if the given location contains a ship, false if it does not.
@@ -86,7 +126,7 @@ public class Ocean {
 		}else{
 			if(column>0){
 				for(int i=1; i<4; i++){
-					c -=1;
+					c --;
 					if(c>=0){
 						Ship s = ships[row][c];
 						if(s.getShipType()!="emptySea"){
@@ -101,7 +141,7 @@ public class Ocean {
 			c = column;
 			if(row>0){
 				for(int i=1; i<4; i++){
-					r-=1;
+					r--;
 					if(r>=0){
 						Ship s =ships[r][column];
 						if(s.getShipType()!="emptySea"){
@@ -113,6 +153,43 @@ public class Ocean {
 			}
 		}
 		return false; 
+	}
+	public Ship adjecentShipUp(int row, int column, boolean horizontal){
+		int r = row;
+		int c = column;
+		Ship s = ships[row][column];
+		if(s.getShipType()!="emptySea"){
+			return s;
+		}else{
+			if(column>0 && horizontal){
+				for(int i=1; i<4; i++){
+					c --;
+					if(c>=0){
+						s = ships[row][c];
+						if(s.getShipType()!="emptySea"){
+							if(s.isHorizontal() && s.length>column-c) // TODO important might need adjustments
+							return  s;
+						}
+					}
+					
+				}
+			}
+			r = row;
+			c = column;
+			if(row>0 && !horizontal){
+				for(int i=1; i<4; i++){
+					r--;
+					if(r>=0){
+						s =ships[r][column];
+						if(s.getShipType()!="emptySea"){
+							if(!s.isHorizontal() && s.length>row-r) // TODO important might need adjustments 
+							return s;
+						}
+					}
+				}
+			}
+		}
+		return null;
 	}
 	/**
 	 * Returns true if the given location contains a real ship, still afloat, (not an EmptySea), false if it does not. 
@@ -137,7 +214,8 @@ public class Ocean {
 		for(int i = 0; i<10;i++){
 			System.out.print(i+" ");
 			for(int j=0; j<10; j++){
-				System.out.print(this.getShipArray()[i][j].toString());
+				Ship s = this.getShipArray()[i][j];
+				System.out.print(s.toString());
 			}
 			System.out.println();
 		}

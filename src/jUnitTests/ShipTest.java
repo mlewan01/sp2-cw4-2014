@@ -34,7 +34,7 @@ public class ShipTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		o = new Ocean();
-		//o.placeAllShipsRandomly();
+		o.placeAllShipsRandomly();
 		r = 3;
 		c = 4;
 		
@@ -42,12 +42,12 @@ public class ShipTest {
 		s.setHorizontal(true);
 		s.setBowRow(r);
 		s.setBowColumn(c);
-		o.setShip(r, c, s);
-		o.setShip(5, c, s);
-		o.setShip(0,3,s);
+//		o.setShip(r, c, s);
+//		o.setShip(5, c, s);
+//		o.setShip(0,3,s);
 
-		o.setShip(9, 9, new Destroyer());
-		o.setShip(9, 4, new Submarine());
+//		o.setShip(9, 9, new Destroyer());
+//		o.setShip(9, 4, new Submarine());
 	}
 
 	@AfterClass

@@ -31,8 +31,10 @@ public class OceanTest {
 		s.setHorizontal(true);
 		s.setBowRow(r);
 		s.setBowColumn(c);
-//		o.setShip(r, c, s);
-//		o.setShip(5, c, s);
+		o.setShip(r, c, s);
+		o.setShip(r, 5, s);
+		o.setShip(r, 6, s);
+		o.setShip(r, 7, s);
 //		o.setShip(0,3,s);
 		o.placeAllShipsRandomly();
 		//o.setShip(9, 9, new Destroyer());
@@ -84,9 +86,11 @@ public class OceanTest {
 	@Test
 	public void testShootAt(){
 		System.out.println("is horizontal??:  "+o.ships[r][c].isHorizontal());
+		for(boolean b:o.ships[r][c].hit){System.out.println(b);}
 		System.out.println("true??:  " + o.ships[r][c].shootAt(r, 6));
+		System.out.println("true??:  " + o.ships[r][c].shootAt(r, 7));
 		s.isSunk();
-		
+		for(boolean b:o.ships[r][c].hit){System.out.println(b);}
 	}
 }
 

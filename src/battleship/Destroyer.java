@@ -18,11 +18,14 @@ public class Destroyer extends Ship{
 		super.hit  = new boolean[4];
 		super.length = 2;
 		type = "destroyer";
-		super.ts = "d";
 	}
 	
 	@Override
 	public String getShipType(){
 		return type;
+	}
+	@Override
+	public String toString(){
+		return " d ";
 	}
 }

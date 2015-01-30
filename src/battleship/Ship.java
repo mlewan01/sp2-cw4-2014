@@ -11,17 +11,14 @@ package battleship;
  * what: sp2-cw4-2014 Battleship game
  */
 public class Ship {
-	protected String ts;
+	
 	private int bowRow; // which contains the bow (front) of the ship (0 to 9)
 	private int bowColumn; // which contains the bow (front) of the ship (0 to 9)
 	protected int length; // the number of squares occupied by the ship. 
 	protected boolean horizontal; // true if the ship occupies a single row, false otherwise
-	protected boolean [] hit = new boolean[4]; // to indicate whether that part of the ship has been hit.
+	public boolean [] hit = new boolean[4]; // to indicate whether that part of the ship has been hit.
 									 //only battleship uses 4 locations, see "length"
 	
-	public Ship(){
-		ts = "s";
-	}
 	/**
 	 * Checks if is ok to put the ship in given location.
 	 * The ship must not overlap another ship, or touch another ship (vertically, horizontally, or diagonally), 
@@ -194,6 +191,6 @@ public class Ship {
 	 */
 	public String toString(){
 		//String s = isHorizontal() ? "-": "|"; // TODO to be remved
-		return " "+ts+" ";
+		return " sh ";
 	}
 }

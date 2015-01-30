@@ -18,11 +18,14 @@ public class Cruiser extends Ship{
 		super.hit  = new boolean[4];
 		super.length = 3;
 		type = "cruiser";
-		super.ts = "c";
 	}
 	
 	@Override
 	public String getShipType(){
 		return type;
+	}
+	@Override
+	public String toString(){
+		return " c ";
 	}
 }
