@@ -3,8 +3,10 @@
  */
 package battleship;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 /**
  * The main game's class containing the main method.
@@ -14,23 +16,7 @@ import java.util.Scanner;
  * what: sp2-cw4-2014 Battleship game
  */
 public class BattleshipGame {
-	
-	public static void main1(String[] a){
-		Ocean o = new Ocean();
-		o.placeAllShipsRandomly(); 
-	}
-	public static void main2(String[] arg){
-		Ocean o = new Ocean();
-		for(int i = 0; i<10;i++){
-			for(int j=0; j<10; j++){
-				o.getShipArray()[i][j] = new Ship();
-				//System.out.println( "dupa" );
-				System.out.println(o.getShipArray()[i][j].toString());
-			}
-		}
-		System.out.println(o.getShipArray());
-	}
-	
+	Ocean o;
 	
 	/**
 	 * @param args
@@ -42,55 +28,68 @@ public class BattleshipGame {
 		int [] xy = new int[2];
 		xy[0]=3;
 		xy[1]=3;
-		String s;
-		boolean mustGameGoOn = true;
-		Scanner sc = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Would you like to play a Battleship game? [Y/N]");
-		while (sc.hasNext() && (sc.nextLine().equalsIgnoreCase("y"))){
-			System.out.println("gra w toku");
-			do{
-				o.printShipsConfiguration();
-				xy = userImput("Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space or \"\\n\". \nEnter \"exit\" to exit the game.");
-				o.shootAt(xy[0], xy[1]);
-				o.print();
-			}while(mustGameGoOn);
-			System.out.println("Would you like to play the game again? [Y/N]");
+//		while (sc.hasNext() && (sc.nextLine().equalsIgnoreCase("y"))){
+		try{
+
+			while (br.readLine().equalsIgnoreCase("y")){
+				do{
+					o.printShipsConfiguration();
+					xy = userImput(br, "Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space or \"\\n\". \nEnter \"exit\" to exit the game.");
+					o.shootAt(xy[0], xy[1]);
+					o.print();
+					
+				}while(o.getShipsSunk()!=20);
+				System.out.println("Would you like to play the game again? [Y/N]");
+			}
+			br.close();
+		}catch(IOException e){
+			e.printStackTrace();
 		}
-		sc.close();
 		System.out.println("x="+xy[0]+"  y="+xy[1]);
 		System.out.println("game exit...");
 		
-	}
-	
-	
+	}	
 	
 	/**
 	 * Collect user input for the coordinates for the shoot.
 	 * @return int array with coordinates to perform shoot to.
 	 */
-	public static int[] userImput(String msg){
+	public static int[] userImput(BufferedReader br, String msg){
 		int [] xy = new int[2];
 		boolean inputCorrect = false;
-		Scanner sc = new Scanner(System.in);
+
 		while(!inputCorrect){
 			System.out.println(msg);
 			try{
-				if(sc.hasNext("exit")) {
+				String s=br.readLine();
+				
+				if(s.equalsIgnoreCase("exit")) {
 					System.out.println("exiting...");
 					System.exit(0);
 				}
-				xy[0] =sc.nextInt(); 
-				xy[1]=sc.nextInt();
-				
-			}catch(InputMismatchException e){
+				StringTokenizer st = new StringTokenizer(s);
+				for(int i = 0; i<2; i++){
+					if(st.hasMoreTokens()){
+						xy[i] = Integer.parseInt(st.nextToken()); 
+					}else{
+						System.out.println("please enter coordinate nr: "+(i+1));
+						st = new StringTokenizer(br.readLine());
+						i--;
+					}
+				}
+				inputCorrect = true;
+
+			}catch(NumberFormatException e){
 			 	System.out.println("wrong input, please try again...");
-			 	sc.nextLine();
+
 			 	continue;
 			}catch(Exception e){
 				System.out.println("some other errors... please try again !");
-				sc.nextLine();
 				continue;
 			}
+			
 			if(xy[0]>9 || xy[0]<0){
 				System.out.println("x not in a range..."+xy[0]);
 				continue;
@@ -100,7 +99,6 @@ public class BattleshipGame {
 				continue;
 			}
 		}
-		sc.close();
 		return xy;
 	}
 }
