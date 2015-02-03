@@ -201,18 +201,24 @@ public class Ocean {
 		
 		if(s.getShipType() == "emptySea"){
 			s.hit[0]=true;
+			System.out.println("miss...");
 			return false;
 		}else {
+			System.out.println("hit ! ");
 			if(s.isHorizontal()){
 				int h = column-s.getBowColumn(); // to determine the right segment of the ship
 				if(s.isSunk()){
 					return false;
 				}else {
+					this.hitCount++;
 					if(s.hit[h]) {
 						return true;
 					}else {
 						s.hit[h] = true;
-						this.hitCount++;
+						if(s.isSunk()) {
+							this.shipsSunk++;
+							System.out.println("you just sunk: "+s.getShipType());
+						}
 						return true;
 					}
 				}
@@ -221,11 +227,15 @@ public class Ocean {
 				if(s.isSunk()){
 					return false;
 				}else {
+					this.hitCount++;
 					if(s.hit[h]){
 						return true;
 					}else{
 						s.hit[h] = true;
-						this.hitCount++;
+						if(s.isSunk()) {
+							this.shipsSunk++;
+							System.out.println("you just sunk: "+s.getShipType());
+						}
 						return true;
 					}
 				}

@@ -32,14 +32,16 @@ public class BattleshipGame {
 		System.out.println("Would you like to play a Battleship game? [Y/N]");
 //		while (sc.hasNext() && (sc.nextLine().equalsIgnoreCase("y"))){
 		try{
-
 			while (br.readLine().equalsIgnoreCase("y")){
+				o.printShipsConfiguration();
 				do{
-					o.printShipsConfiguration();
+					
 					xy = userImput(br, "Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space or \"\\n\". \nEnter \"exit\" to exit the game.");
 					o.shootAt(xy[0], xy[1]);
 					o.print();
-					
+					System.out.println("Hit count:    "+o.getHitCount());
+					System.out.println("Shots fired: "+o.getShotsFired());
+					System.out.println("Ships sunk:   "+o.getShipsSunk());
 				}while(o.getShipsSunk()!=20);
 				System.out.println("Would you like to play the game again? [Y/N]");
 			}
