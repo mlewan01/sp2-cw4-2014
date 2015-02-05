@@ -6,6 +6,7 @@ package battleship;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Random;
 import java.util.StringTokenizer;
 
 /**
@@ -22,41 +23,42 @@ public class BattleshipGame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Ocean o = new Ocean();
-		o.placeAllShipsRandomly();
 		
-		int [] xy = new int[2];
-		xy[0]=3;
-		xy[1]=3;
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Would you like to play a Battleship game? [Y/N]");
-//		while (sc.hasNext() && (sc.nextLine().equalsIgnoreCase("y"))){
 		try{
 			while (br.readLine().equalsIgnoreCase("y")){
-				o.printShipsConfiguration();
+				
+				Ocean o = new Ocean();
+				o.placeAllShipsRandomly();
+				int [] xy = new int[2];
+				
+				o.printShipsConfiguration();   // TODO for testing only!!!  To be removed for production
+				
 				do{
 					
-					xy = userImput(br, "Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space or \"\\n\". \nEnter \"exit\" to exit the game.");
+					//xy = userImput(br, "Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space or \"\\n\". \nEnter \"exit\" to exit the game.");
+					xy = autoInput(br, "computer plays !"); // TODO for simulation only, to be removed for production
 					o.shootAt(xy[0], xy[1]);
 					o.print();
 					System.out.println("Hit count:    "+o.getHitCount());
 					System.out.println("Shots fired: "+o.getShotsFired());
 					System.out.println("Ships sunk:   "+o.getShipsSunk());
-				}while(o.getShipsSunk()!=20);
+				}while(o.getShipsSunk()!=10);
 				System.out.println("Would you like to play the game again? [Y/N]");
 			}
 			br.close();
 		}catch(IOException e){
 			e.printStackTrace();
 		}
-		System.out.println("x="+xy[0]+"  y="+xy[1]);
 		System.out.println("game exit...");
 		
 	}	
 	
 	/**
 	 * Collect user input for the coordinates for the shoot.
-	 * @return int array with coordinates to perform shoot to.
+	 * @return int array with values range 0 to 9.
 	 */
 	public static int[] userImput(BufferedReader br, String msg){
 		int [] xy = new int[2];
@@ -101,6 +103,19 @@ public class BattleshipGame {
 				continue;
 			}
 		}
+		return xy;
+	}
+	/**
+	 * Returns a random coordinates to play a Battleship game automaticly
+	 * @param int array with coordinates values from 0 to 9
+	 */
+	public static int[] autoInput(BufferedReader br, String msg){
+		int [] xy = new int[2];
+		
+		Random random = new Random();
+		xy[0] = random.nextInt(10);
+		xy[1] = random.nextInt(10);
+		
 		return xy;
 	}
 }
