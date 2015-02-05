@@ -38,12 +38,10 @@ public class Ship {
 							continue;
 						}
 						if(ocean.isOccupied(ir, ic)){
-//							System.out.println("is Occupied!! "+toString()+" "+ir+" "+ic); // TODO to be removed !!
 							return false;
 						}
 					}
 				}
-//				System.out.println(" is Ok -- " +toString()+ " "+row+" "+column); // TODO to be removed
 				return true;
 			}else return false;
 			
@@ -58,12 +56,10 @@ public class Ship {
 							continue;
 						}
 						if(ocean.isOccupied(ir, ic)){
-//							System.out.println("is Occupied!! "+toString()+" "+ir+" "+ic);  // TODO  to be removed for production !!
 							return false;
 						}
 					}
 				}
-//				System.out.println(" is Ok | " +toString()+ " "+row+" "+column); // TODO to be removed
 				return true;
 			}else return false;
 		}
@@ -127,7 +123,6 @@ public class Ship {
 				s++;
 			}
 		}
-//		System.out.println(this + " is hit: " + s + " times !!"); // TODO test output, remove for production code !!
 		return s==length; 
 	}
 	
@@ -190,7 +185,6 @@ public class Ship {
 	 * @return String containing state of the object	
 	 */
 	public String toString(){
-		//String s = isHorizontal() ? "-": "|"; // TODO to be remved
 		return " sh ";
 	}
 }

@@ -24,15 +24,9 @@ public class Ocean {
 	 */
 	public Ocean(){
 		ships = new Ship[10][10];
-		this.resetOcean(); // populates the ocean with fresh emptySea segments
 		shotsFired = 0;
 		hitCount = 0;
 		shipsSunk = 0;
-/*		for(int i=0; i<10; i++){
-			for(int j=0; j<10;j++){
-				ships[i][j] = new Ship();
-			}
-		}*/
 	}
 	
 	/**
@@ -42,11 +36,10 @@ public class Ocean {
 	 */
 	public void placeAllShipsRandomly(){
 		Ship s = new Ship();
-		this.resetOcean(); // populates the ocean with fresh emptySea segments // TODO maybe to be removed ??
+		this.resetOcean(); // populates the ocean with fresh emptySea segments
 		Random ran = new Random();
 		
 		for(int i=0; i<10; i++){
-			//System.out.println("proba: "+ i); // TODO remove for production code !!
 			int r = ran.nextInt(10);
 			int c = ran.nextInt(10);
 			boolean hor = ran.nextBoolean();
@@ -62,7 +55,6 @@ public class Ocean {
 			if(!isOccupied(r,c)){
 				if(s.okToPlaceShipAt(r, c, hor, this)){
 					s.placeShipAt(r, c, hor, this);
-//					System.out.println("r: "+r+" c "+c+ "ship: "+s.toString()+ "hor? "+hor); // TODO test output !!! remove for production !!
 				}else{
 					i--;
 					continue;
@@ -96,9 +88,7 @@ public class Ocean {
 				Ship sh = this.ships[j][i];
 				int l = sh.length;
 				if(sh.getShipType()!="emptySea" && !sh.horizontal && l>1){
-//					System.out.println("test n: " + n);  // TODO to be removed
 					if(n==0){
-//						System.out.println("  test2 n: " +n); // TODO to be removed
 						for(int k=j+1; k<j+l; k++){
 							if(k<10){
 								this.ships[k][i] = sh;
@@ -127,7 +117,7 @@ public class Ocean {
 					if(c>=0){
 						Ship s = ships[row][c];
 						if(s.getShipType()!="emptySea"){
-							if(s.isHorizontal() && s.length>column-c) // TODO important might need adjustments
+							if(s.isHorizontal() && s.length>column-c)
 							return  true;
 						}
 					}
@@ -142,7 +132,7 @@ public class Ocean {
 					if(r>=0){
 						Ship s =ships[r][column];
 						if(s.getShipType()!="emptySea"){
-							if(!s.isHorizontal() && s.length>row-r) // TODO important might need adjustments 
+							if(!s.isHorizontal() && s.length>row-r)
 							return true;
 						}
 					}
@@ -151,43 +141,7 @@ public class Ocean {
 		}
 		return false; 
 	}
-//	public Ship adjecentShipUp(int row, int column, boolean horizontal){ // TODO to be removed
-//		int r = row;
-//		int c = column;
-//		Ship s = ships[row][column];
-//		if(s.getShipType()!="emptySea"){
-//			return s;
-//		}else{
-//			if(column>0 && horizontal){
-//				for(int i=1; i<4; i++){
-//					c --;
-//					if(c>=0){
-//						s = ships[row][c];
-//						if(s.getShipType()!="emptySea"){
-//							if(s.isHorizontal() && s.length>column-c) // TODO important might need adjustments
-//							return  s;
-//						}
-//					}
-//					
-//				}
-//			}
-//			r = row;
-//			c = column;
-//			if(row>0 && !horizontal){
-//				for(int i=1; i<4; i++){
-//					r--;
-//					if(r>=0){
-//						s =ships[r][column];
-//						if(s.getShipType()!="emptySea"){
-//							if(!s.isHorizontal() && s.length>row-r) // TODO important might need adjustments 
-//							return s;
-//						}
-//					}
-//				}
-//			}
-//		}
-//		return null;
-//	}
+
 	/**
 	 * Returns true if the given location contains a real ship, still afloat, (not an EmptySea), false if it does not. 
 	 * In addition, this method updates the number of shots that have been fired, and the number of hits. 
@@ -248,7 +202,7 @@ public class Ocean {
 	 * 'S' to indicate a location fired upon and hit a ship, '-' to indicate fired and missed location, 'x' to indicate sunken ship, 
 	 * '.' to indicate a location never fired upon.
 	 */
-	public void print(){// TODO !!!
+	public void print(){
 		System.out.print("  ");
 		for(int i = 0; i<10; i++){System.out.print(" "+i+" ");}
 		System.out.println();
@@ -281,7 +235,7 @@ public class Ocean {
 		}
 	}
 	/**
-	 * TODO 
+	 * prints Oceans ships configuration, for testing 
 	 */
 	public void printShipsConfiguration(){
 		System.out.print("  ");
@@ -343,7 +297,7 @@ public class Ocean {
 	 * (hence my earlier restriction, now crossed out), sometimes there is just no good alternative.
 	 * @return ships the array with ships 
 	 */
-	public Ship[][] getShipArray(){ // ukryta wskazowka w opisie zadania, byc moze do ulatwienia napisania programu
+	public Ship[][] getShipArray(){ 
 		return ships;
 	}
 	/**

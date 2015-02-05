@@ -38,6 +38,6 @@ public class EmptySea extends Ship{
 	
 	@Override
 	public String toString(){
-		return " . "; // TODO !!
+		return " . ";
 	}
 }
