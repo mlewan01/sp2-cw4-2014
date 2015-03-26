@@ -34,18 +34,22 @@ public class BattleshipGame {
 				o.placeAllShipsRandomly();
 				int [] xy = new int[2];
 				
-				o.printShipsConfiguration();   // TODO for testing only!!!  To be removed for production
+				//o.printShipsConfiguration();   // TODO for testing only!!!  To be removed for production
 				
 				do{
 					
-					//xy = userImput(br, "Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space or \"\\n\". \nEnter \"exit\" to exit the game.");
-					xy = autoInput(br, "computer plays !"); // TODO for simulation only, to be removed for production
+					xy = userImput(br, "Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space or \"\\n\". \nEnter \"exit\" to exit the game.");
+					//xy = autoInput(br, "computer plays !"); // TODO for simulation only, to be removed for production
 					o.shootAt(xy[0], xy[1]);
-					o.print();
-					System.out.println("Hit count:    "+o.getHitCount());
-					System.out.println("Shots fired: "+o.getShotsFired());
-					System.out.println("Ships sunk:   "+o.getShipsSunk());
+//					o.print();    // TODO  ---------------------------remove for production code !!!
+//					System.out.println("Hit count:    "+o.getHitCount());TODO  ---------------------------remove for production code !!!
+//					System.out.println("Shots fired: "+o.getShotsFired());TODO  ---------------------------remove for production code !!!
+//					System.out.println("Ships sunk:   "+o.getShipsSunk());TODO  ---------------------------remove for production code !!!
 				}while(o.getShipsSunk()!=10);
+				o.print();
+				System.out.println("Hit count:    "+o.getHitCount());
+				System.out.println("Shots fired: "+o.getShotsFired());
+				System.out.println("Ships sunk:   "+o.getShipsSunk());
 				System.out.println("Would you like to play the game again? [Y/N]");
 			}
 			br.close();
