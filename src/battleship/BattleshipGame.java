@@ -34,12 +34,13 @@ public class BattleshipGame {
 				o.placeAllShipsRandomly();
 				int [] xy = new int[2];
 				
-				//o.printShipsConfiguration();   // TODO for testing only!!!  To be removed for production
+				//o.printShipsConfiguration();   // TODO for testing only!!!  To be removed for production. 
+												 //it will print initial state of the ocean after randomly populating it with warships
 				
 				do{
 					
 					xy = userImput(br, "Please enter coordinates for \"x\" and \"y\" within range [0,9] separated by space or \"\\n\". \nEnter \"exit\" to exit the game.");
-					//xy = autoInput(br, "computer plays !"); // TODO for simulation only, to be removed for production
+					//xy = autoInput(br, "computer plays !"); // TODO for simulation only, to be removed for production, game will play by itself, for testing usualy
 					o.shootAt(xy[0], xy[1]);
 //					o.print();    // TODO  ---------------------------remove for production code !!!
 //					System.out.println("Hit count:    "+o.getHitCount());TODO  ---------------------------remove for production code !!!
